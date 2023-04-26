@@ -10,7 +10,7 @@ const options = {
 };
 
 const data = await fetch(url, options).then((res) => res.json());
-console.log(data);
+
 
 ---
 
@@ -26,7 +26,7 @@ console.log(data);
         <div class="carousel">
             {
                 data.map((testmonial) => {
-                    return <Testimonial class="square" name={testmonial.name} content={testmonial.describtion} link={"testimonials/" + testmonial.id}/> 
+                    return <Testimonial class="square" name={testmonial.name} content={testmonial.description} link={"testimonials/" + testmonial.id}/> 
                 })
             }
 
@@ -49,11 +49,11 @@ console.log(data);
     const firstSquare = carousel.querySelectorAll(".square")[0];
 
     let isDragStart = false, isDraggin = false, prevPageX, prevScrollLeft, postitionDiff;
-    let firstSquareWith = firstSquare.clientWidth +4;
+    let firstSquareWith = firstSquare.clientWidth +8;
 
     arrowicons.forEach(icon => {
         icon.addEventListener("click", () => {
-            console.log(icon);
+            
             carousel.scrollLeft += icon.id == "left" ? -firstSquareWith : firstSquareWith;
         })
     })
@@ -119,6 +119,7 @@ console.log(data);
 
 </script>
 
+
 <style>
 .testimonials-container{
     height: 700px;
@@ -127,7 +128,7 @@ console.log(data);
 
 }
 .wrapper{
-    max-width: 1062px;
+    max-width: 1074px;
     position: relative;
     margin-inline: auto;
 }
@@ -161,7 +162,7 @@ console.log(data);
      display: inline-block; 
     width: 350px;
     height: 350px;
-    margin: 0;
+    margin-inline: 4px;
     padding: 0;
 }
 
