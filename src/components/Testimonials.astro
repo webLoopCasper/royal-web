@@ -1,23 +1,41 @@
 ---
 import Testimonial from "./Testimonial.astro";
+const url = "https://xvbpoegkmhnbxcjwtzrw.supabase.co/rest/v1/testimonials-table";
+const api = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2YnBvZWdrbWhuYnhjand0enJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE2NjI1NzIsImV4cCI6MTk5NzIzODU3Mn0.x3dsG9E4C9P6LnkeWoD4gn-NT24yTXVI7d2P4s22FRM";
+const options = {
+  method: "GET",
+  headers: {
+    apikey: api,
+  },
+};
+
+const data = await fetch(url, options).then((res) => res.json());
+console.log(data);
 
 ---
 
 
 <div class="testimonials-container">
-    <Testimonial titel="jens" content="hej med dig jo "/> 
+   
+   
 
     <div class="wrapper">
         <img id="left" class="arrow left" src="img/arrowleft.svg" alt="">
         
         
         <div class="carousel">
-            <div class="square blue" draggable="false"></div>
+            {
+                data.map((testmonial) => {
+                    return <Testimonial class="square" name={testmonial.name} content={testmonial.describtion} link={"testimonials/" + testmonial.id}/> 
+                })
+            }
+
+            <!-- <div class="square blue" draggable="false"></div>
             <div class="square red" draggable="false"></div>
             <div class="square yellow" draggable="false"></div>
             <div class="square green" draggable="false"></div>
             <div class="square orange" draggable="false"></div>
-            <div class="square grey" draggable="false"></div>
+            <div class="square grey" draggable="false"></div> -->
         </div>
         <img  class="arrow right" src="img/arrowright.svg" alt="">
     </div>

@@ -1,0 +1,71 @@
+---
+import Mainlayout from "../layouts/mainlayout.astro";
+---
+
+<Mainlayout>
+    <form>
+        <label for="title">Title:</label>
+        <input id="title" name="title" type="text" required />
+      
+        <label for="long">Long Description:</label>
+        <textarea id="long" name="long" rows="6" required></textarea>
+      
+        <button type="submit">Submit</button>
+      </form>
+    
+</Mainlayout>
+
+  
+  <script>
+    // const headers = ;
+  
+    function addTestimonial(newTestimonial) {
+      //dette er funktionen der putter data i tabbellen i databasen
+  
+      const url =
+        "https://xvbpoegkmhnbxcjwtzrw.supabase.co/rest/v1/testimonials-table";
+      const api =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2YnBvZWdrbWhuYnhjand0enJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE2NjI1NzIsImV4cCI6MTk5NzIzODU3Mn0.x3dsG9E4C9P6LnkeWoD4gn-NT24yTXVI7d2P4s22FRM";
+  
+      const options = {
+        method: "POST", //post gør at den putter noget i tabellen istedet for at hente
+        headers: {
+          apikey: api,
+          Authorization: "Bearer " + api,
+          "Content-Type": "application/json",
+          Prefer: "return=representation",
+        },
+        body: JSON.stringify(newTestimonial), //laver variablen newTestimonial til json (her er det et objekt med 2 værdier)
+      };
+  
+      console.log("options:", options);
+  
+      fetch(url, options)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("data:", data);
+          //når dden er færdig med at putte i databasen går den til filen addTestimonialfeedback "/" er for at sikre at den leder i roden
+        //   window.location.href = "/addTestimonialFeedback";
+        });
+    }
+  
+    const form = document.querySelector("form");
+    const headline = document.querySelector("#title");
+    const beskrivelse = document.querySelector("form");
+  
+    console.log("form.elements", form.elements);
+  
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+  
+      const obj = {
+        name: form.elements.title.value,
+        description: form.elements.long.value,
+      };
+  
+  
+  
+     
+    });
+  </script>
+

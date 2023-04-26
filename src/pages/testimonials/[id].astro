@@ -1,0 +1,34 @@
+---
+export async function getStaticPaths() {
+  const url =
+    "https://xvbpoegkmhnbxcjwtzrw.supabase.co/rest/v1/testimonials-table";
+
+  const api =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2YnBvZWdrbWhuYnhjand0enJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE2NjI1NzIsImV4cCI6MTk5NzIzODU3Mn0.x3dsG9E4C9P6LnkeWoD4gn-NT24yTXVI7d2P4s22FRM";
+
+  const options = {
+    method: "GET",
+    headers: {
+      apikey: api,
+    },
+  };
+
+  const data = await fetch(url, options).then((res) => res.json());
+
+  return data.map((singleTestimonial) => {
+    return {
+      params: { id: singleTestimonial.id },
+      props: { singleTestimonial },
+    };
+  });
+}
+const {singleTestimonial} = Astro.props;
+
+
+
+import Mainlayout from "../../layouts/mainlayout.astro";
+---
+
+<Mainlayout>
+    <p>{singleTestimonial.describtion}</p>
+</Mainlayout>
