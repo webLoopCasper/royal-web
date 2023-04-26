@@ -1,0 +1,169 @@
+---
+import Testimonial from "./Testimonial.astro";
+
+---
+<div class="testimonials-container">
+    <!-- <Testimonial/> -->
+
+    <div class="wrapper">
+        <img id="left" class="arrow left" src="img/arrowleft.svg" alt="">
+        
+        
+        <div class="carousel">
+            <div class="square blue" draggable="false"></div>
+            <div class="square red" draggable="false"></div>
+            <div class="square yellow" draggable="false"></div>
+            <div class="square green" draggable="false"></div>
+            <div class="square orange" draggable="false"></div>
+            <div class="square grey" draggable="false"></div>
+        </div>
+        <img  class="arrow right" src="img/arrowright.svg" alt="">
+    </div>
+
+
+</div>
+
+<script>
+    const carousel = document.querySelector(".carousel");
+    const arrowicons = document.querySelectorAll(".arrow");
+    const firstSquare = carousel.querySelectorAll(".square")[0];
+
+    let isDragStart = false, isDraggin = false, prevPageX, prevScrollLeft, postitionDiff;
+    let firstSquareWith = firstSquare.clientWidth +4;
+
+    arrowicons.forEach(icon => {
+        icon.addEventListener("click", () => {
+            console.log(icon);
+            carousel.scrollLeft += icon.id == "left" ? -firstSquareWith : firstSquareWith;
+        })
+    })
+
+    const autoSlide = () => {
+        if (carousel.scrollLeft == (carousel.scrollWidth - carousel.clientWidth )) return;
+
+        postitionDiff = Math.abs(postitionDiff);
+        //let firstSquareWith = firstSquare.clientWidth +4;
+        let valDifference = firstSquareWith - postitionDiff
+
+        if(carousel.scrollLeft > prevScrollLeft){
+            return carousel.scrollLeft += postitionDiff > firstSquareWith / 3 ? valDifference : -postitionDiff;
+        }else{
+            return carousel.scrollLeft -= postitionDiff > firstSquareWith / 3 ? valDifference : -postitionDiff;
+        }
+        
+    }
+
+    const dragStart = (e) =>{
+        isDragStart = true;
+        prevPageX = e.pageX || e.touches[0].pageX;
+        prevScrollLeft = carousel.scrollLeft;
+    }
+    
+    const dragging = (e) => {
+        if(!isDragStart) return;
+        e.preventDefault();
+        // carousel.scrollLeft = e.pageX;
+        isDraggin = true;
+
+        postitionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+        carousel.scrollLeft = prevScrollLeft - postitionDiff;
+
+        carousel.classList.add("dragging");
+        
+    }
+
+    const dragStop = () => {
+         isDragStart = false;
+         carousel.classList.remove("dragging");
+         if(!isDraggin) return;
+         isDraggin = false;
+         autoSlide();
+
+    }
+
+
+    carousel.addEventListener("mousedown", dragStart);
+    carousel.addEventListener("touchstart", dragStart);
+
+
+    carousel.addEventListener("mousemove", dragging);
+    carousel.addEventListener("touchmove", dragging);
+
+
+    carousel.addEventListener("mouseup", dragStop);
+    carousel.addEventListener("mouseleave", dragStop);
+    carousel.addEventListener("touchend", dragStop);
+
+   
+   
+
+</script>
+
+<style>
+.testimonials-container{
+    height: 700px;
+    background-color: var(--mainwhite);
+ 
+
+}
+.wrapper{
+    max-width: 1062px;
+    position: relative;
+    margin-inline: auto;
+}
+
+.wrapper .carousel{
+    overflow: hidden;
+    white-space: nowrap; 
+    scroll-behavior: smooth;
+}
+
+.carousel.dragging{
+    scroll-behavior: auto;
+}
+
+
+
+
+
+.arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+}
+.right{
+    right: 0;
+}
+
+.square{
+     display: inline-block; 
+    width: 350px;
+    height: 350px;
+    margin: 0;
+    padding: 0;
+}
+
+.blue{
+    background-color: blue;
+}
+.red{
+    background-color: red;
+}
+.yellow{
+    background-color: yellow;
+}
+.green{
+    background-color: green
+}
+
+.orange{
+    background-color: orange;
+}
+.grey{
+    background-color: grey;
+}
+
+
+</style>

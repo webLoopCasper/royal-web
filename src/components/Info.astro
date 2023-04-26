@@ -1,0 +1,122 @@
+---
+import Button from "./Button.astro";
+---
+
+<div class="info-container">
+    <div class="info">
+        <div class="headline-container">
+            <h2>ESCAPE REALITY</h2>
+        </div>
+        <div class="concept">
+            <div>
+                <img src="img/dukke.png" alt="">
+            </div>
+            <div class="tekst-info-container">
+                <p class="subheadline bold"><b>Historiske og royale gåder</b></p>
+                <p class="tekst-info">En spændende og udfordrende oplevelse, der vil transportere dig til en verden af kongelige intriger og hemmeligheder.
+                    Som I arbejder jer igennem gåderne, vil I opdage mere og mere af den hemmelige historie om kongeriget, og det er op til jer at samarbejde og finde den nødvendige information for at undslippe</p>
+                <span></span>	
+                <div class="sub-info">
+                    <p class="bold">Sværhedsgrad:</p>
+                    <img src="img/lock.svg" alt="">
+                    <img src="img/lock.svg" alt="">
+                    <img src="img/lock.svg" alt="">
+                    <img src="img/lock.svg" alt="">
+                    <img src="img/lock.svg" alt="">
+                    <img src="img/ulock.svg" alt="">
+
+                </div>
+
+                <div class="sub-info">
+                    <p class="bold">Uhygge:</p>
+                    <img src="img/skull.svg" alt="">
+                    <img src="img/skull.svg" alt="">
+                    <img src="img/skull.svg" alt="">
+                    <img src="img/uskull.svg" alt="">
+                    <img src="img/uskull.svg" alt="">
+                    <img src="img/uskull.svg" alt="">
+
+                </div>
+
+                <div class="sub-info">
+                    <p class="bold">Antal personer: <span>2-3</span> </p>
+                </div>
+
+                <div class="sub-info">
+                    <p class="bold">Pris: <span>350kr. per person </span> </p>
+                </div>
+
+                <Button action="Book nu">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .info-container{
+		background-color: var(--mainwhite);
+        padding-bottom: 40px;
+
+	}
+	.headline-container{
+		text-align: center;
+		padding-top: 50px;
+	}
+
+	.headline-container h2{
+		font-size: 35px;
+	}
+
+    .info{
+		
+		max-width: 1000px;
+		margin-inline: auto;
+	}
+
+	.concept{
+		display: flex;
+		justify-content:center;
+		margin-top: 40px;
+	}
+
+	.subheadline{
+		font-size: 20px;
+	}
+
+
+
+	.concept img{
+		width: 350px;
+	}
+
+	.tekst-info-container{
+		max-width: 450px;
+		margin-inline: 20px;
+	}
+
+	.tekst-info{
+		margin-top: 20px;
+	}
+
+	.sub-info{
+		display: flex;
+		margin-top: 30px;
+	}
+	.sub-info p{
+		margin-right: 20px;
+	}
+	.sub-info img{
+		width: 15px;
+		margin-inline: 2px;
+
+	}
+
+	.sub-info span{
+		color: var(--maingrey)
+	}
+
+   
+
+
+</style>

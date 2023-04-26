@@ -1,0 +1,130 @@
+---
+import "../styles/style.css"
+---
+
+<div class="header-container">
+    <div class="burger-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    <a class="logo-a" href=""><div><img src="img/logo.svg" alt=""></div></a>
+    <div class="lang">
+        <p>DK/EN</p>
+    </div>
+</div>
+<div class="overlaymenu">
+    <div>
+        <ul class="sub-menu">
+            <li><a href="/">Escape Rooms</a></li>
+            <li><a href="/">Historien</a></li>
+            <li><a href="/">Om os</a></li>
+            <li><a href="/">Find Vej</a></li>
+            <li><a href="/"></a></li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+<style>
+
+    
+    .header-container{
+        background-color: var(--mainblack);
+        display: flex;
+        justify-content: space-between;
+    }
+    .burger-menu{
+        z-index: 9999;
+        position: relative;
+        top: 22px;
+        left: 20px;
+    }
+    .bar{
+        display: block;
+  width: 33px;
+  height: 2px;
+  margin-bottom: 5px;
+  position: relative;
+  background: var(--mainwhite);
+  border-radius: 3px;
+  z-index: 1;
+
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              
+              opacity 0.55s ease;
+    }
+    .logo-a img{
+        width: 70px;
+        margin: 10px;
+    }
+    .overlaymenu{
+        height: 100vh;
+        width: 200px;
+        background-color: var(--mainblack);
+        position:fixed;
+        top:0;
+        left:0;
+        overflow: hidden;
+         transform: translateX(-100%); 
+        transition: transform 0.2s;
+        z-index: 999;
+    }
+   body .open{
+        transform: translateX(0);
+    }
+    .lang{
+        position: relative;
+        top: 20px;
+        right: 40px;
+        color: var(--mainwhite);
+    }
+
+
+    .sub-menu{
+        position: relative;
+        top: 60px;
+    }
+
+    .sub-menu a{
+        padding: 15px;
+        display: block;
+        color: var(--mainwhite);
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .cross span:nth-last-child(3){
+        transform: rotate(45deg) translate(5px,5px);
+    }
+    .cross span:nth-last-child(1){
+        transform: rotate(-45deg) translate(4px,-5px);
+    }
+    .cross span:nth-last-child(2){
+         opacity: 0; 
+    }
+   
+
+    
+
+
+
+
+</style>
+
+
+<script>
+    const overlaymenu = document.querySelector(".overlaymenu") 
+    const burgermenu = document.querySelector(".burger-menu");
+   
+ 
+    burgermenu.addEventListener("click",function(){
+     overlaymenu.classList.toggle("open");
+     burgermenu.classList.toggle("cross");
+
+    });
+ 
+   
+ 
+ </script>
