@@ -2,67 +2,86 @@
 import Button from "./Button.astro";
 ---
 
-<div class="test-container">
-
+<div class="whiteground">
+  <div class="test-container">
     <div class="headline-container">
-        <h2>Test dig selv om escape <br> er noget for dig</h2>
+      <h2>Test dig selv om escape <br /> er noget for dig</h2>
     </div>
     <div class="test-wrapper">
-        <div class="test-box">
-            <div class="info-test">
-
-            </div>
-            <Button action="Tag Testen"/>
-
-
-        </div>
-
+      <div class="test-box">
+        <div class="info-test"></div>
+        <Button action="Tag Testen" />
+      </div>
     </div>
-
+  </div>
 </div>
 
-
-
-
-
 <style>
-    .test-container{
-        text-align: center;
-        padding-top: 40px;
-    }
+  .whiteground {
+    background-color: var(--mainwhite);
+  }
 
-    .headline-container h2 {
-        color:var(--mainwhite);
-        font-size: 30px;
-    }
+  .test-container {
+    text-align: center;
+    padding-top: 40px;
+    position: relative;
+    background-color: var(--mainblack);
+    transform: skewY(-5deg);
+    overflow: hidden;
+    margin-bottom: 60px;
+  }
 
-    .test-container{
+  .test-container:before,
+  .test-container:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: var(--mainblack);
+  }
+
+  .test-container:before {
+    top: -10%;
+    transform-origin: top left;
+    transform: skewY(-5deg);
+  }
+
+  .test-container:before {
+    bottom: -10%;
+    transform-origin: bottom left;
+    transform: skewY(-5deg);
+  }
+
+  .headline-container h2 {
+    color: var(--mainwhite);
+    font-size: 30px;
+    transform: skewY(5deg);
+  }
+
+  .test-container {
     padding-bottom: 60px;
-    }
+  }
 
-    .test-wrapper{
-         display: flex;
-         justify-content: center;
-    }
+  .test-wrapper {
+    display: flex;
+    justify-content: center;
+    transform: skewY(5deg);
+  }
 
-    .test-box{
-        margin-top: 40px;
-        width: 450px;
-        height: 300px;
-        background-color: var(--middelblue);
-        border-radius: 25px;
-       
-       
-        
-    }
-    .info-test{
-        width: 350px;
-        height: 150px ;
-        background-color: var(--darkblue);
-        border-radius: 25px;
-        margin-top: 40px;
-        margin-inline: auto;
-    }
-
-
+  .test-box {
+    margin-top: 40px;
+    width: 450px;
+    height: 300px;
+    background-color: var(--middelblue);
+    border-radius: 25px;
+  }
+  .info-test {
+    width: 350px;
+    height: 150px;
+    background-color: var(--darkblue);
+    border-radius: 25px;
+    margin-top: 40px;
+    margin-inline: auto;
+  }
 </style>
