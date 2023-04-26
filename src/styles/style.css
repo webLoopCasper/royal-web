@@ -56,7 +56,9 @@ h5 {
 
 p,
 a,
-li {
+li,
+textarea,
+input {
   font-family: founders_grotesklight;
 }
 .bold {

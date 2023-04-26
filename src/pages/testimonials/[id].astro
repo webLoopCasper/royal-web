@@ -1,4 +1,5 @@
 ---
+import Mainlayout from "../../layouts/mainlayout.astro";
 export async function getStaticPaths() {
   const url =
     "https://xvbpoegkmhnbxcjwtzrw.supabase.co/rest/v1/testimonials-table";
@@ -26,9 +27,72 @@ const {singleTestimonial} = Astro.props;
 
 
 
-import Mainlayout from "../../layouts/mainlayout.astro";
+
 ---
 
 <Mainlayout>
-    <p>{singleTestimonial.describtion}</p>
+  <div class="comment-container">
+    
+     
+      <div class="comment-box">
+          <div class="comment-wrapper">
+                <div class="name-container">
+                  <p>{singleTestimonial.name}</p>
+                </div>
+                <div class="description-container">
+                  <p>{singleTestimonial.description}</p>
+                </div>
+          </div>
+      </div>
+
+    
+   
+  </div>
+   
 </Mainlayout>
+
+<style>
+  p{
+    color: var(--mainwhite);
+  }
+  .comment-container{
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--mainblack);
+}
+
+.comment-box{
+  width: 350px;
+  border-radius: 25px;
+  height: 300px;
+  background-color: var(--middelblue);
+}
+.comment-wrapper{
+  width: 280px;
+  margin-top: 20px;
+  margin-inline: auto;
+  
+}
+.name-container{
+  background-color: var(--darkblue);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 15px;
+
+}
+.description-container{
+  margin-top: 20px;
+  width: 280px;
+  height: 180px;
+  border-radius: 15px;
+  padding: 10px 20px;
+  
+  background-color: var(--darkblue);
+
+}
+
+
+
+</style>
+

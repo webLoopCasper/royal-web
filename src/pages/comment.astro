@@ -2,18 +2,96 @@
 import Mainlayout from "../layouts/mainlayout.astro";
 ---
 
+
+
 <Mainlayout>
-    <form>
-        <label for="title">Name</label>
-        <input id="title" name="title" type="text" required />
+    <div class="comment-container">
       
-        <label for="long">Long Description:</label>
-        <textarea id="long" name="long" rows="6" required></textarea>
+       
+        <div class="comment-box">
+            <div class="comment-wrapper">
+                <form>
+                    
+                    <input class="name-container" id="title" name="title" type="text" placeholder="Navn" required />
+                    
+                  
+                    
+                    <textarea class="description-container" id="long" name="long" placeholder="Din Anmeldelse" rows="6" required></textarea>
+                  
+                    <button class="subButton" type="submit">Indsend</button>
+                  </form>
+            </div>
+        </div>
+  
       
-        <button type="submit">Submit</button>
-      </form>
+     
+    </div>
+     
+  </Mainlayout>
+  
+  <style>
+    p{
+      color: var(--mainwhite);
+    }
+    .comment-container{
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--mainblack);
+  }
+  
+  .comment-box{
+    width: 350px;
+    border-radius: 25px;
+    height: 300px;
+    background-color: var(--middelblue);
+  }
+  .comment-wrapper{
+    width: 280px;
+    margin-top: 20px;
+    margin-inline: auto;
     
-</Mainlayout>
+  }
+  .name-container{
+    background-color: var(--darkblue);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    color:white;
+    font-size: 16px;
+  
+  }
+  .description-container{
+    margin-top: 20px;
+    width: 280px;
+    height: 150px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    color:white;
+    border:none;
+    font-size: 16px;
+    
+    background-color: var(--darkblue);
+  
+  }
+
+  .subButton{
+    margin-top: 20px;
+        padding:12px 50px;
+        margin-top: 10px;
+        border-radius: 15px;
+        background-color: var(--lightblue);
+        display: inline-block;
+        color:var(--mainwhite);
+        text-decoration: none;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border: none;
+  }
+  
+  
+  
+  </style>
 
   
   <script>

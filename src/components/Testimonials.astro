@@ -1,4 +1,5 @@
 ---
+import Button from "./Button.astro";
 import Testimonial from "./Testimonial.astro";
 const url = "https://xvbpoegkmhnbxcjwtzrw.supabase.co/rest/v1/testimonials-table";
 const api = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2YnBvZWdrbWhuYnhjand0enJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE2NjI1NzIsImV4cCI6MTk5NzIzODU3Mn0.x3dsG9E4C9P6LnkeWoD4gn-NT24yTXVI7d2P4s22FRM";
@@ -18,7 +19,9 @@ const data = await fetch(url, options).then((res) => res.json());
 <div class="testimonials-container">
    
    
-
+    <div class="headline-container">
+        <h2>Hvad siger vores kunder?</h2>
+      </div>
     <div class="wrapper">
         <img id="left" class="arrow left" src="img/arrowleft.svg" alt="">
         
@@ -39,6 +42,15 @@ const data = await fetch(url, options).then((res) => res.json());
         </div>
         <img  class="arrow right" src="img/arrowright.svg" alt="">
     </div>
+
+    <div class="button-container">
+        <Button link="/comment" action="skriv din egen anmeldelse"/>
+    </div>
+    
+
+    
+
+
 
 
 </div>
@@ -121,12 +133,12 @@ const data = await fetch(url, options).then((res) => res.json());
 
 
 <style>
-.testimonials-container{
-    height: 700px;
-    background-color: var(--mainwhite);
- 
-
+.headline-container{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
+
 .wrapper{
     max-width: 1074px;
     position: relative;
@@ -143,6 +155,10 @@ const data = await fetch(url, options).then((res) => res.json());
     scroll-behavior: auto;
 }
 
+.button-container{
+    text-align: center;
+    margin-bottom: 40px;
+}
 
 
 
